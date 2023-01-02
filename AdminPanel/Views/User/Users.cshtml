@@ -1,0 +1,29 @@
+﻿@model IEnumerable<User>
+@{
+    ViewData["Title"] = "Пользователи";
+}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Логин</th>
+            <th scope="col">Роль</th>
+            <th scope="col">#</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+
+            <tr scope="row">
+                <td>@item.Name</td>
+                <td>@item.Role</td>
+                <td>
+                <form method="post" asp-action="DeleteUser" asp-controller="User" asp-route-id="@item.Id">
+                    <button class="btn btn-primary">Удалить</button>
+                </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
