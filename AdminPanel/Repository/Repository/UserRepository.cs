@@ -1,0 +1,33 @@
+﻿using AdminPanel.Models;
+using AdminPanel.Repository.Interfaces;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace AdminPanel.Repository.Repository
+{
+    public class UserRepository : IUserRepository
+    {
+        private ApplicationContext _context;
+
+        public UserRepository(ApplicationContext context)
+        {
+            _context = context;
+        }
+
+        public List<User> GetAll()
+        {
+            return _context.Users.ToList();
+        }
+
+        public void DeleteUser(User user)
+        {
+            _context.Users.Remove(user);
+            _context.SaveChanges();
+        }
+
+        public User GetById(int id)
+        {
+            return _context.Users.FirstOrDefault(x => x.Id == id);
+        }
+    }
+}
