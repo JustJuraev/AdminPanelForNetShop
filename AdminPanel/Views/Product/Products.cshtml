@@ -1,0 +1,32 @@
+﻿@model List<Product>
+@{
+    ViewData["Title"] = "Продукты";
+}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Изображение</th>
+            <th scope="col">Название</th>
+            <th scope="col">#</th>
+            <th scope="col">#</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+
+                <tr scope="row">
+                    <td><img src="~/products/images/@item.Image" class="test"></td>
+                    <td>@item.Name</td>
+                    <td>
+                    <form method="post" asp-action="Remove" asp-controller="Product" asp-route-id="@item.Id">
+                        <button class="btn btn-primary">Удалить</button>
+                    </form>
+                    </td>
+                    <td>
+                    <a class="btn btn-primary"asp-action="Update" asp-controller="Product" asp-route-id="@item.Id">Изменить</a>
+                    </td>
+                </tr>
+        }
+    </tbody>
+</table>
