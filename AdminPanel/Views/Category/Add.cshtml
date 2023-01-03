@@ -1,0 +1,33 @@
+﻿@model Category
+@{
+    ViewData["Title"] = "Добавление категории";
+}
+<form enctype="multipart/form-data" asp-action="Add" asp-controller="Category" method="post">
+    <div class="form-group">
+        <label asp-for="Name">Введите имя для продукта</label>
+        <input type="text" asp-for="Name" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CoverPhoto">Выберите фото</label>
+        <div class="custom-file">
+            <input asp-for="CoverPhoto" class="custom-file-input">
+            <label class="custom-file-label">Выберите файл</label>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Добавить</button>
+</form>
+
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script type="text/javascript">
+        $(".custom-file-input").on("change", function () {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+    </script>
+}
+

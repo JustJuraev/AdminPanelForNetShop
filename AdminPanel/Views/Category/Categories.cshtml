@@ -1,0 +1,31 @@
+﻿@model List<Category>
+@{
+    ViewData["Title"] = "Категории";
+}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Изображение</th>
+            <th scope="col">Название</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+
+            <tr scope="row">
+                <td><img src="~/categories/images/@item.Image" class="test"></td>
+                <td>@item.Name</td>
+                <td>
+                    <form method="post" asp-action="Delete" asp-controller="Category" asp-route-id="@item.Id">
+                        <button class="btn btn-primary">Удалить</button>
+                    </form>
+                </td>
+                <td>
+                    <a class="btn btn-primary" asp-action="Update" asp-controller="Category" asp-route-id="@item.Id">Изменить</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
