@@ -1,0 +1,14 @@
+﻿@model Property
+@{
+    ViewData["Title"] = "Изменение типа характеристики";
+}
+<form asp-action="Update" asp-controller="Property" method="post">
+    <div class="form-group">
+        <label asp-for="Value">Введите имя для типа характеристки</label>
+        <input type="text" asp-for="Value" class="form-control">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Изменить</button>
+</form>
+
+
