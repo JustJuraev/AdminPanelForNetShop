@@ -1,0 +1,27 @@
+﻿@model List<ProductProperty>
+@{
+    var list = Model;
+}
+<link rel="stylesheet" href="~/css/main.css" />
+
+<form method="post" asp-action="Update" asp-controller="ProductProperty">
+    
+    @for(int i = 0; i < list.Count; i++)
+    {
+       
+        <h2>@list[i].Property.Value</h2>
+        <div class="ppdiv">
+        <input type="text" class="form-control" asp-for="@list[i].Value" value="@list[i].Value">
+        <div class="ppuknoka">
+        <a class="btn btn-danger" asp-action="Delete" asp-controller="ProductProperty" asp-route-id="@list[i].Id">Удалить</a>
+        </div>
+        </div>
+        <input type="hidden" asp-for="@list[i].Id" value="@list[i].Id">
+        <input type="hidden" asp-for="@list[i].PropertyId" value="@list[i].PropertyId">
+        <input type="hidden" asp-for="@list[i].ProductId" value="@list[i].ProductId">
+       
+    }
+    <div class="ppknoka">
+    <button class="btn btn-primary">Изменить</button>
+    </div>
+</form>

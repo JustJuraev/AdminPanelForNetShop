@@ -1,0 +1,23 @@
+﻿@model ProductProperty
+@{
+
+}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+<form method="post" asp-action="Add" asp-controller="ProductProperty" >
+    <input type="hidden" asp-for="ProductId" value="@ViewBag.ProductId">
+<div class="form-group">
+    <label>Выберите опцию</label>
+<select asp-for="PropertyId" class="form-select">
+    <option selected>Выберите опцию</option>
+    @foreach (var item in ViewBag.Property)
+    {
+        <option value="@item.Id">@item.Value</option>
+    }
+</select>
+ </div>
+ <div class="form-group">
+     <label>Введите значение</label>
+     <input type="text" asp-for="Value" class="form-control">
+</div>
+<button class="btn btn-primary">Добавить </button>
+</form>
