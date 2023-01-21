@@ -1,5 +1,6 @@
 ﻿using AdminPanel.Models;
 using AdminPanel.Repository.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -16,7 +17,7 @@ namespace AdminPanel.Repository.Repository
 
         public List<User> GetAll()
         {
-            return _context.Users.ToList();
+            return _context.Users.AsNoTracking().ToList();
         }
 
         public void DeleteUser(User user)

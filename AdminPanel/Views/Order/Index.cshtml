@@ -1,0 +1,97 @@
+﻿@model List<Order>
+@{
+    ViewData["Title"] = "Заказы";
+}
+<link rel="stylesheet" href="~/css/main.css" />
+
+
+<div class="tabletest">
+
+<form id="order-filters">
+<table class="table table-striped">
+<thead>
+    <tr>
+        <th scope="col">
+            Номер заказа
+            <input name="filter[id]" placeholder="Номер заказа" class="form-control">
+        </th>
+        <th scope="col">
+             Адрес
+             <input name="filter[address]" placeholder="Адрес" class="form-control">
+        </th>
+        <th scope="col">
+             Номер телефона
+             <input name="filter[phone]" placeholder="Номер телефона" class="form-control">
+        </th>
+        <th scope="col">#</th>
+        <th scope="col">
+            Дата
+            
+            <input name="filter[date_start]" id="start_date" autocomplete="off" placeholder="Дата" class="form-control">
+            <input name="filter[date_end]" id="end_date" autocomplete="off" placeholder="Дата" class="form-control">
+            
+        </th>
+        <th scope="col">
+            Корзина
+        </th>
+        <th scope="col">
+            Номер карты
+            <input name="filter[cart_num]" placeholder="Номер карты" class="form-control">
+        </th>
+        <th scope="col">
+            Общая сумма
+            <input name="filter[sum]" placeholder="Общая сумма" class="form-control">
+        </th>
+        <th scope="col">
+            Статус
+            <select name="filter[status]" form="order-filters" class="form-control">
+                <option value=""> --Статус-- </option>
+                <option value="delivered">Доставлено</option>
+                <option value="not_delivered">Не доставлено</option>
+                <option value="canseled">Отменен</option>
+            </select>
+        </th>
+        <th scope="col">#</th>
+    </tr>
+</thead>
+<tbody>
+    @foreach (var item in Model)
+    {
+
+        <tr scope="row">
+            <td>@item.Id</td>
+            <td>@item.Address</td>
+            <td>@item.Number</td>
+            @if(item.Delivery == true)
+            {
+                <td>Доставка</td>
+            }
+            @if(item.Delivery == false)
+            {
+                 <td>Самовывоз</td>
+            }
+            <td>@item.Date</td>
+            <td><a class="btn btn-primary" asp-action="BasketDetails" asp-controller="Order" asp-route-id="@item.Id">Посмотреть</a></td>
+            <td>@item.CartNum</td>
+            <td>@item.TotalSum сум</td>
+            @if(item.Status == 20)
+            {
+                <td>Не доставлен</td>
+            }
+            @if(item.Status == 10)
+            {
+                <td>Доставлен</td>
+            }
+            @if(item.Status == 30)
+            {
+                <td>Отменен</td>
+            }
+            <td><a class="btn btn-primary" asp-action="Update" asp-controller="Order" asp-route-id="@item.Id">Изменить</a></td>
+        </tr>
+    }
+</tbody>
+</table>
+<button type="submit" class="hidden">submit</button>
+</form>
+</div>
+

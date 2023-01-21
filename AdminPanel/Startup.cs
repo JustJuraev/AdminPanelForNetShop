@@ -46,8 +46,24 @@ namespace AdminPanel
                options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
                options.AccessDeniedPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
            });
-            services.AddScoped<IAccountService, AccountService>();
+          
+            services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IPropertyRepository, PropertyRepository>();
+            services.AddScoped<IProductPropertyRepository, ProductPropertyRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IProductAddressRepository, ProductAddressRepository>();
+            services.AddScoped<IRegionRepostiory, RegionRepostiory>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IAccountService, AccountService>();
+            services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IPropertyService, PropertyService>();
+            services.AddScoped<IProductPropertyService, ProductPropertyService>();
+            services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<IProductAddressService, ProductAddressService>();
+            services.AddScoped<IRegionService, RegionService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

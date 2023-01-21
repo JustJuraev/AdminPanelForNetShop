@@ -11,9 +11,11 @@ namespace AdminPanel.Controllers
     {
       
         private IProductService _productService;
-        public ProductController(IProductService productService)
+        private ICategoryService _categoryService;
+        public ProductController(IProductService productService, ICategoryService categoryService)
         {
             _productService = productService;
+            _categoryService = categoryService;
         }
 
         public IActionResult Products()
@@ -23,6 +25,7 @@ namespace AdminPanel.Controllers
 
         public IActionResult Add() 
         {
+            ViewBag.Categories = _categoryService.GetAll();
             return View();
         }
 
@@ -44,6 +47,7 @@ namespace AdminPanel.Controllers
 
         public IActionResult Update(int id)
         {
+            ViewBag.Categories = _categoryService.GetAll();
             return View(_productService.GetById(id));
         }
 

@@ -1,0 +1,20 @@
+﻿@model List<OrderBasket>
+@{
+}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Название</th>
+            <th scope="col">Количество</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr scope="row">
+                <td>@item.Name</td>
+                <td>@item.Count</td>
+            </tr>
+        }
+    </tbody>
+</table>

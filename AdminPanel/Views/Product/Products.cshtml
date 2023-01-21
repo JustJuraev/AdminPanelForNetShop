@@ -7,26 +7,42 @@
         <tr>
             <th scope="col">Изображение</th>
             <th scope="col">Название</th>
+            <th scope="col">Количество</th>
+            <th scope="col">#</th>
+            <th scope="col">#</th>
             <th scope="col">#</th>
             <th scope="col">#</th>
         </tr>
     </thead>
+    
     <tbody>
         @foreach (var item in Model)
         {
-
-                <tr scope="row">
-                    <td><img src="~/products/images/@item.Image" class="test"></td>
-                    <td>@item.Name</td>
-                    <td>
-                    <form method="post" asp-action="Remove" asp-controller="Product" asp-route-id="@item.Id">
-                        <button class="btn btn-primary">Удалить</button>
-                    </form>
-                    </td>
-                    <td>
-                    <a class="btn btn-primary"asp-action="Update" asp-controller="Product" asp-route-id="@item.Id">Изменить</a>
-                    </td>
-                </tr>
+           
+            <tr scope="row">
+                
+                <td><img src="~/products/images/@item.Image" class="test"></td>
+                <td>@item.Name</td>
+                <td>@item.Count</td>
+                <td>
+                <form method="post" asp-action="Remove" asp-controller="Product" asp-route-id="@item.Id">
+                    <button class="btn btn-primary">Удалить</button>
+                </form>
+                </td>
+                <td>
+                <a class="btn btn-primary"asp-action="Update" asp-controller="Product" asp-route-id="@item.Id">Изменить</a>
+                </td>
+                <td>
+                    <a class="btn btn-primary"asp-action="Update" asp-controller="ProductProperty" asp-route-id="@item.Id">Изменить характеристики</a>
+                </td>
+                <td>
+                    <a class="btn btn-primary"asp-action="Add" asp-controller="ProductProperty" asp-route-productId="@item.Id">Добавить характеристики</a>
+                </td>
+                <td>
+                    <a class="btn btn-primary" asp-action="Update" asp-controller="ProductAddress" asp-route-id="@item.Id">Изменить регион</a>
+                </td>
+            </tr>
+           
         }
     </tbody>
 </table>

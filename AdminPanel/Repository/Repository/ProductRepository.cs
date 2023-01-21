@@ -42,7 +42,7 @@ namespace AdminPanel.Repository.Repository
 
         public List<Product> GetAll()
         {
-            return _context.Products.AsNoTracking().ToList();
+            return _context.Products.OrderBy(x => x.Id).AsNoTracking().ToList();
         }
 
         public void Add(Product product) 
@@ -77,7 +77,11 @@ namespace AdminPanel.Repository.Repository
 
                 product.Image = AddPhoto(product);
             }
-
+            else
+            {
+                var oldProduct = GetById(product.Id);
+                product.Image = oldProduct.Image;
+            }
             _context.Products.Update(product);
             _context.SaveChanges();
         }
@@ -88,7 +92,4 @@ namespace AdminPanel.Repository.Repository
         }
     }
 }
-//TODO: Сделать сервис для продуктов
-//TODO: Заменить в контролере ссылки на сервис
-//TODO: Добавить удаление и обновление продуктов
-//TODO: Добавить категории
+
