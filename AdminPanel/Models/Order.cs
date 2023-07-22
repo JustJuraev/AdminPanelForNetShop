@@ -15,7 +15,7 @@ namespace AdminPanel.Models
 
         public DateTime Date { get; set; }
 
-        public List<string> Basket { get; set; }    
+       // public List<string> Basket { get; set; }    
 
         public string CartNum { get; set; }
 

@@ -25,5 +25,9 @@ namespace AdminPanel.Models
         public DbSet<ProductAddress> ProductAddresses { get; set; }
 
         public DbSet<Region> Regions { get; set; }
+
+        public DbSet<Log> Logs { get; set; }
+
+        public DbSet<OrderBasket> OrderItems { get; set; }
     }
 }

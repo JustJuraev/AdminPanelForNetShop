@@ -25,7 +25,7 @@ namespace AdminPanel.Controllers
 
         public IActionResult BasketDetails(int id) 
         {
-            return View(_orderService.ReturnBasket(_orderService.GetById(id)));
+            return View(_orderService.ReturnBasket(id));
         }
 
         public IActionResult Update(int id)

@@ -49,6 +49,18 @@ namespace AdminPanel.Repository.Repository
         { 
             product.Image = AddPhoto(product);
 
+            product.StockId = 1;
+
+            var log = new Log
+            { 
+                BarCode = product.BarCode,
+                Count = product.Count,
+                Type = "income",
+                TotalPrice = product.Count * product.PriceIncome,
+                Time = DateTime.Now
+            };
+
+            _context.Logs.Add(log);
             _context.Products.Add(product);
             _context.SaveChanges();
         }
@@ -60,13 +72,23 @@ namespace AdminPanel.Repository.Repository
                 File.Delete($"{path}{product.Image}");
             }
 
+            var log = new Log
+            {
+                BarCode = product.BarCode,
+                Count = product.Count,
+                Type = "delete",
+                TotalPrice = product.Count * product.PriceOutCome,
+                Time = DateTime.Now
+            };
+
+            _context.Logs.Add(log);
             _context.Products.Remove(product);
             _context.SaveChanges();
         }
 
         public void Update(Product product)
         {
-          
+            product.StockId = 1;
             if(product.CoverPhoto != null) 
             {
                 var oldProduct = GetById(product.Id);
@@ -82,7 +104,18 @@ namespace AdminPanel.Repository.Repository
                 var oldProduct = GetById(product.Id);
                 product.Image = oldProduct.Image;
             }
+
+            var log = new Log
+            {
+                BarCode = product.BarCode,
+                Count = product.Count,
+                Type = "change",
+                TotalPrice = product.Count * product.PriceIncome,
+                Time = DateTime.Now
+            };
+
             _context.Products.Update(product);
+            _context.Logs.Add(log);
             _context.SaveChanges();
         }
 

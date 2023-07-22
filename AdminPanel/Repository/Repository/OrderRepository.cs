@@ -78,16 +78,9 @@ namespace AdminPanel.Repository.Repository
             _context.SaveChanges();
         }
 
-        public List<OrderBasket> ReturnBasket(Order order)
+        public List<OrderBasket> ReturnBasket(int id)
         {
-            List<OrderBasket> list = new List<OrderBasket>();
-            foreach(var item in order.Basket)
-            {
-                var str = _context.Products.FirstOrDefault(x => x.Id == Int32.Parse(item[0].ToString()));
-                list.Add(new OrderBasket { Name = str.Name, Count = Int32.Parse(item[2].ToString()) });
-            }
-
-            return list;
+            return _context.OrderItems.Where(x => x.OrderId == id).ToList();
         }
     }
 }

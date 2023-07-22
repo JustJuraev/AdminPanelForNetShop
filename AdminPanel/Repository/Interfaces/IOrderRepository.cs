@@ -9,7 +9,7 @@ namespace AdminPanel.Repository.Interfaces
 
         Order GetById(int id);
 
-        List<OrderBasket> ReturnBasket(Order order);
+        List<OrderBasket> ReturnBasket(int id);
 
         void Update(Order order);
     }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "lUkOKna+FtnShqetjZkDfxChXAZ4VtVP2E5xxZWFM0M9CzpYm8IbWm+qivtwp/mjjG6QadK/gp2vW/w/4tPXxg==",
+  "dgSpecHash": "DBSNsd3kv3Zt3YzleR2m4v0nqjHox0JsTNPtnO9pyevHm6stl5NUq9x/DqF72VdyjKkTaF510A9vmoqi4gXRHQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\User\\source\\repos\\AdminPanel\\AdminPanel\\AdminPanel.csproj",
+  "projectFilePath": "C:\\Users\\User\\source\\repos\\AdminPanelForNetShop2\\AdminPanel\\AdminPanel.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\User\\.nuget\\packages\\humanizer.core\\2.2.0\\humanizer.core.2.2.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",

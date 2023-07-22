@@ -6,14 +6,16 @@
         <tr>
             <th scope="col">Название</th>
             <th scope="col">Количество</th>
+            <th scope="col">Цена</th>
         </tr>
     </thead>
     <tbody>
         @foreach(var item in Model)
         {
             <tr scope="row">
-                <td>@item.Name</td>
-                <td>@item.Count</td>
+                <td>@item.ProductName</td>
+                <td>@item.ProductCount</td>
+                <td>@item.Price</td>
             </tr>
         }
     </tbody>

@@ -24,9 +24,9 @@ namespace AdminPanel.Service.Services
            return _orderRepository.GetById(id);
         }
 
-        public List<OrderBasket> ReturnBasket(Order order)
+        public List<OrderBasket> ReturnBasket(int id)
         {
-            return _orderRepository.ReturnBasket(order);
+            return _orderRepository.ReturnBasket(id);
         }
 
         public void Update(Order order)

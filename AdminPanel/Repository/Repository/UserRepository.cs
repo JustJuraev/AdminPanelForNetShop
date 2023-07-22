@@ -15,10 +15,7 @@ namespace AdminPanel.Repository.Repository
             _context = context;
         }
 
-        public List<User> GetAll()
-        {
-            return _context.Users.AsNoTracking().ToList();
-        }
+        public List<User> GetAll() => _context.Users.AsNoTracking().ToList();
 
         public void DeleteUser(User user)
         {
